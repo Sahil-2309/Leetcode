@@ -47,9 +47,9 @@ public:
         backtrack(root,p,f,first);
         f=0;
         backtrack(root,q,f,second);
-        for(auto i:first)
+        for(auto i:second)
         {
-            for(auto j:second)
+            for(auto j:first)
             {
                 if(i==j)
                     return i;
