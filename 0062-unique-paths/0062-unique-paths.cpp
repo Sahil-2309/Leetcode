@@ -11,11 +11,7 @@ public:
                 dp[i][j]=dp[i+1][j]+dp[i][j+1];
             }
         }
-        // for(auto v:dp){
-        //     for(auto a:v){
-        //         cout<<a<<" ";
-        //     }cout<<endl;
-        // }
+
         return dp[0][0];
     }
 };
