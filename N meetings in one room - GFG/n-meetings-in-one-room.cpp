@@ -6,25 +6,29 @@ using namespace std;
 class Solution
 {
     public:
-    typedef pair<int, int> pi;
+    //Function to find the maximum number of meetings that can
+    //be performed in a meeting room.
+    static bool comp(const pair<int, int>& p1, const pair<int, int>& p2) {
+    return p1.second < p2.second;
+    }
     int maxMeetings(int start[], int end[], int n)
-    { 
-
-        int time=abs(*min_element(start,start+n) - *max_element(end,end+n)),ans=0;
-        priority_queue <pi, vector<pi>, greater<pi>> ma;
-        for(int i =0;i<n;i++){
-            ma.push(make_pair(end[i],start[i]));
+    {
+        // Your code here
+        int ans=0,e=0;
+        vector<pair<int,int>> m;
+        for(int i=0;i<n;i++){
+            m.push_back(make_pair(start[i],end[i]));
         }
-        int prev=INT_MIN;
-        while(!ma.empty()){
-            pi top= ma.top();
-            if(top.second>prev){
+        sort(m.begin(),m.end(),comp);
+        e=-1;
+        for(auto v:m){
+            if(e<v.first){
                 ans++;
-              prev=top.first;
+                e=v.second;
             }
-            ma.pop();
         }
         return ans;
+        
     }
 };
 
