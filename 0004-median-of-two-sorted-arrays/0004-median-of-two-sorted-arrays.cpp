@@ -8,22 +8,26 @@ public:
         {
             if(nums1[j]<nums2[i])
             {
-                a.push_back(nums1[j++]);
+                a.push_back(nums1[j]);
+                j++;
             }
             else
             {
-                a.push_back(nums2[i++]);     
+                a.push_back(nums2[i]);
+                i++;
             }
         }
         if(j<nums1.size())
         {
-            while(j<nums1.size())
-                a.push_back(nums1[j++]);
+            while(j<nums1.size()){
+                a.push_back(nums1[j]);
+                j++;}
         }
         if(i<nums2.size())
         {
-            while(i<nums2.size())
-                a.push_back(nums2[i++]);
+            while(i<nums2.size()){
+                a.push_back(nums2[i]);
+                i++;}
         }
         int s = a.size();
         if(s%2!=0)
