@@ -7,7 +7,7 @@ class Solution {
   public:
     // Function to return a list containing the DFS traversal of the graph.
     void help(vector<int> &vis,vector<int> &dfs,vector<int> adj[],int i){
-        // if(vis[i]) return ;
+        if(vis[i]) return ;
         vis[i]=1;
         dfs.push_back(i);
         for(auto k:adj[i]){
@@ -17,7 +17,7 @@ class Solution {
     }
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
       vector<int> vis(V,0);
-      vis[0]=1;
+    //   vis[0]=1;
       vector<int> dfs;
       help(vis,dfs,adj,0);
       return dfs;
