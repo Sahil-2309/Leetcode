@@ -5,23 +5,13 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    bool detect(int src,vector<int> adj[],vector<int> &vis){
-        queue<pair<int,int>> q;
-        vis[src]=1;
-        q.push({src,-1});
-        while(!q.empty()){
-            int node=q.front().first;
-            int parent=q.front().second;
-            q.pop();
-            for(auto a:adj[node]){
-                if(!vis[a]){
-                    vis[a]=1;
-                    q.push({a,node});
-                }
-                else if(parent !=a){
-                    return 1;
-                }
+    bool detect(int node,int parent,vector<int> adj[],vector<int> &vis){
+        vis[node]=1;
+        for(auto v:adj[node]){
+            if(!vis[v]){
+                if(detect(v,node,adj,vis)==true) return true;
             }
+            else if(v!=parent) return true;
         }
         return 0;
         
@@ -30,7 +20,7 @@ class Solution {
         vector<int> vis(V,0);
         for(int i=0;i<V;i++){
             if(!vis[i]){
-                if(detect(i,adj,vis)) return true;
+                if(detect(i,-1,adj,vis)) return true;
             }
         }
         return false;
